@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Hello, world!</title>
+  </head>
+  <body>
+        <div class="container">
+            <div id="header">Zarejestruj się</div>
+            <form id="my-form">
+                    <label for="fname">Imię</label>
+                    <input type="text" class="form-control" id="fname">
+                    <small id="dane1"></small><br/>
+
+                    <label for="lname">Nazwisko</label>
+                    <input type="text" class="form-control" id="lname">
+                    <small id="dane2"></small><br/>
+                    
+                    <label for="adressEmail">Email</label>
+                    <input type="text" class="form-control" id="adressEmail">
+                    <small id="dane3"></small><br/>
+
+                    <label for="Pin">PIN</label>
+                    <input type="text" class="form-control" id="Pin">
+                    <small id="dane4"></small><br/>
+                <button type="button" class="btn btn-primary" id="btn-1">Dalej</button>    
+              </form>
+        </div>
+    <script>
+      const myForm = document.getElementById('my-form');
+      const btn1 = document.getElementById('btn-1');
+      const dane1 = document.getElementById('dane1');
+      const dane2 = document.getElementById('dane2');   
+
+      function walidacja(){
+        let fname = myForm.fname.value;
+        let lname = myForm.lname.value;
+        let mail = myForm.adressEmail.value;
+        let PIN = myForm.Pin.value;
+
+        const pattern1 = /^["A-ZŻŹ"]["a-zżź"]{1,}$/;
+        let checkFname = pattern1.test(fname);
+        let checkLname = pattern1.test(lname);
+
+        if(checkFname == true){
+          dane1.innerHTML = `Poprawne dane!`;
+          dane1.style.color = `#28a745`;
+        }else{
+          dane1.innerHTML = `Niepoprawne dane!`;
+          dane1.style.color = `#dc3545`;
+        }
+
+        if(checkLname == true){
+          dane2.innerHTML = `Poprawne dane!`;
+          dane2.style.color = `#28a745`;
+        }else{
+          dane2.innerHTML = `Niepoprawne dane!`;
+          dane2.style.color = `#dc3545`;
+        }
+
+
+        const pattern2 = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        let checkEmail = pattern2.test(mail);
+
+        if(checkEmail == true){
+          dane3.innerHTML = `Poprawne dane!`;
+          dane3.style.color = `#28a745`;
+        }else{
+          dane3.innerHTML = `Niepoprawne dane!`;
+          dane3.style.color = `#dc3545`;
+        }
+        
+
+        const pattern3 = /^[0-9]{4}$/;
+        let checkPIN = pattern3.test(PIN);
+
+        if(checkPIN == true){
+          dane4.innerHTML = `Poprawne dane!`;
+          dane4.style.color = `#28a745`;
+
+        }else{
+          dane4.innerHTML = `Niepoprawne dane!`;
+          dane4.style.color = `#dc3545`;
+        }
+      }
+
+      btn1.addEventListener('click', walidacja);
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
